@@ -13,9 +13,9 @@ import java.util.List;
 @Repository
 public interface StaffRepo extends JpaRepository<Staff,Long> {
 
-    @Query("SELECT s from Staff s Where s.name = ?1" )
-    public List<Staff> findByStaffName(String staffName);
+    @Query("SELECT s FROM Staff s WHERE s.name=?1")
+    public Staff findStaffByName(String name);
 
-    @Query("SELECT s FROM Staff s WHERE s.superior_id = ?1")
-    public List<Staff> findStaffBySuperior(Long superiorId);
+    @Query("SELECT s.id FROM Staff s WHERE s.superior.id=?1")
+    public Long[] findStaffBySuperior(Long id);
 }

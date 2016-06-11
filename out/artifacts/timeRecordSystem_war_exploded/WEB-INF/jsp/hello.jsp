@@ -12,6 +12,6 @@
     <title>Hello </title>
 </head>
 <body>
-<h1>hi~ ${name}</h1>
+<h1>hi~ </h1>
 </body>
 </html>

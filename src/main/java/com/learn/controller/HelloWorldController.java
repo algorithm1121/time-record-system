@@ -3,7 +3,9 @@ package com.learn.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.learn.controller.viewmodel.ResponseJson;
+import com.learn.model.Project;
 import com.learn.model.Staff;
+import com.learn.repository.ProjectRepo;
 import com.learn.repository.StaffRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,20 +25,32 @@ public class HelloWorldController {
     @Autowired
     StaffRepo StaffRepo;
 
+    @Autowired
+    ProjectRepo ProjectRepo;
 
     @RequestMapping(value = "hello")
     @ResponseBody
-    public String hello(String name) {
+    public ResponseJson hello(String projectName) {
 
+        /*
         List<Staff> staffs = new ArrayList<Staff>();
 
         Staff s1 = new Staff();
         s1.setName(name);
+        s1.setPassword(password);
         staffs.add(s1);
         return JSON.toJSONString(staffs);
-        return JSON.toJSONString(ResponseJson.ok("save success"));
+        */
+        //Staff staff = StaffRepo.findStaffByName(name);
+        Project project = new Project();
+        project.setProjectName(projectName);
+        ProjectRepo.save(project);
+
+
+
+        return ResponseJson.ok("OK");
+
     }
 
-    //得到属性值保存到表
 
 }
